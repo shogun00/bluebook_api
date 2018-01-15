@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920125726) do
+ActiveRecord::Schema.define(version: 20171231083311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "logs", force: :cascade do |t|
+    t.integer "dive_count"
+    t.string "location"
+    t.string "spot"
+    t.date "date"
+    t.string "entry_type"
+    t.string "dive_purpose"
+    t.text "description"
+    t.time "entry_time"
+    t.time "duration"
+    t.float "max_depth"
+    t.float "average_depth"
+    t.float "visibility"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_logs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -38,4 +57,5 @@ ActiveRecord::Schema.define(version: 20170920125726) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "logs", "users"
 end
