@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20171231083311) do
     t.string "dive_purpose"
     t.text "description"
     t.time "entry_time"
-    t.time "duration"
+    t.integer "duration"
     t.float "max_depth"
     t.float "average_depth"
     t.float "visibility"

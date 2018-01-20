@@ -12,6 +12,15 @@ class Api::V1::User::LogsController < ApplicationController
     render json: @log
   end
 
+  def create
+    @log = Log.new(log_params.merge(user_id: current_user.id))
+    if @log.save
+      render json: @log, status: :created
+    else
+      render json: @log.errors, status: :unprocessable_entity
+    end
+  end
+
   def update
   end
 
@@ -26,5 +35,22 @@ class Api::V1::User::LogsController < ApplicationController
 
   def set_log
     @log = Log.find(params[:id])
+  end
+
+  def log_params
+    params.permit(
+      :dive_count,
+      :location,
+      :spot,
+      :date,
+      :entry_type,
+      :dive_purpose,
+      :description,
+      :entry_time,
+      :duration,
+      :max_depth,
+      :average_depth,
+      :visibility
+    )
   end
 end
