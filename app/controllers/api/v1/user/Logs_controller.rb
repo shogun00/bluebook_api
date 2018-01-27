@@ -17,7 +17,7 @@ class Api::V1::User::LogsController < ApplicationController
     if @log.save
       render json: @log, status: :created
     else
-      render json: @log.errors, status: :unprocessable_entity
+      render json: @log.errors.full_messages, status: :unprocessable_entity
     end
   end
 
