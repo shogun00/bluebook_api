@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171231083311) do
     t.date "date"
     t.string "entry_type"
     t.string "dive_purpose"
-    t.text "description"
+    t.text "note"
     t.time "entry_time"
     t.integer "duration"
     t.float "max_depth"

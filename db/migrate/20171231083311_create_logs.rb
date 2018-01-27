@@ -7,7 +7,7 @@ class CreateLogs < ActiveRecord::Migration[5.1]
       t.date :date
       t.string :entry_type
       t.string :dive_purpose
-      t.text :description
+      t.text :note
       t.time :entry_time
       t.integer :duration
       t.float :max_depth

@@ -4,7 +4,7 @@ class Api::V1::User::LogsController < ApplicationController
   before_action :set_divelog, only: [:show, :update, :destroy]
 
   def index
-    @logs = Log.with_user(@user.id)
+    @logs = Log.with_user(@user.id).sort_by_count(params[:sort])
     render json: @logs
   end
 
