@@ -1,9 +1,8 @@
 class Api::V1::User::LogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
 
   def index
-    @logs = @current_user.logs.sort_by_count(params[:sort])
+    @logs = current_user.logs.sort_by_count(params[:sort])
     render json: @logs
   end
 
@@ -13,7 +12,7 @@ class Api::V1::User::LogsController < ApplicationController
   end
 
   def create
-    @log = @current_user.logs.build(log_params)
+    @log = current_user.logs.build(log_params)
     if @log.save
       render json: @log, status: :created
     else
@@ -22,7 +21,7 @@ class Api::V1::User::LogsController < ApplicationController
   end
 
   def update
-    @log = @current_user.logs.find(params[:id])
+    @log = current_user.logs.find(params[:id])
     if @log.update(log_params)
       render json: @log, status: :ok
     else
@@ -31,16 +30,12 @@ class Api::V1::User::LogsController < ApplicationController
   end
 
   def destroy
-    @log = @current_user.logs.find(params[:id])
+    @log = current_user.logs.find(params[:id])
     @log.destroy!
     head :no_content
   end
 
   private
-
-  def set_user
-    @current_user = current_user
-  end
 
   def log_params
     params.permit(
