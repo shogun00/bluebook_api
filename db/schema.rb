@@ -16,18 +16,32 @@ ActiveRecord::Schema.define(version: 20171231083311) do
   enable_extension "plpgsql"
 
   create_table "logs", force: :cascade do |t|
-    t.integer "dive_count"
-    t.string "location"
-    t.string "spot"
-    t.date "date"
-    t.string "entry_type"
-    t.string "dive_purpose"
+    t.integer "dive_count", null: false
+    t.string "location", default: "", null: false
+    t.string "spot", default: "", null: false
+    t.date "date", null: false
+    t.integer "entry_style", limit: 2
+    t.integer "dive_style", limit: 2, default: 0, null: false
     t.text "note"
-    t.time "entry_time"
-    t.integer "duration"
+    t.time "entry_time", null: false
+    t.integer "duration", null: false
     t.float "max_depth"
     t.float "average_depth"
+    t.integer "tank_material", limit: 2, default: 0
+    t.integer "tank_capacity"
+    t.integer "air_starting"
+    t.integer "air_ending"
+    t.integer "suit_type", limit: 2
+    t.integer "suit_thickness"
+    t.integer "weight"
+    t.integer "weather", limit: 2
+    t.integer "temperature"
+    t.integer "water_temperature"
+    t.integer "wave", limit: 2
     t.float "visibility"
+    t.string "guide"
+    t.string "buddy"
+    t.integer "publication", limit: 2, default: 0, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

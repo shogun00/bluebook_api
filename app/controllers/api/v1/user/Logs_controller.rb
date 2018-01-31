@@ -43,14 +43,29 @@ class Api::V1::User::LogsController < ApplicationController
       :location,
       :spot,
       :date,
-      :entry_type,
-      :dive_purpose,
+      :entry_style,
+      :dive_style,
       :description,
       :entry_time,
       :duration,
       :max_depth,
       :average_depth,
-      :visibility
+      :note,
+      :tank_material,
+      :tank_capacity,
+      :air_starting,
+      :air_ending,
+      :suit_type,
+      :suit_thickness,
+      :weight,
+      :weather,
+      :temperature,
+      :water_temperature,
+      :wave,
+      :visibility,
+      :guide,
+      :buddy,
+      :publication
     )
   end
 end
