@@ -15,6 +15,5 @@ class Log < ApplicationRecord
   enum suit_type: {swim: 0, wet: 1, dry: 2}
   enum weather: {sunny: 0, cloudy: 1, rainy: 2}
   enum wave: {big: 0, middle: 1, small: 2}
-  enum publication: {open: 0, close: 1}
-
+  enum publication: {published: 0, unpublished: 1}
 end
